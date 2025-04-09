@@ -1,5 +1,13 @@
-# Vue 3 + Vite
+# STARPETS
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## [Деплой](https://starpets-test.netlify.app): https://starpets-test.netlify.app
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Задание
+
+- В хедере должны быть ссылки на 2 страницы: “Главная” (/) и “Конвертация” (/convert), а также Dropdown с выбором основной валюты сайта
+- На главной странице должны отображаться курсы валют по отношению к основной валюте сайта
+- На странице конвертации должна быть форма, состоящая из 2 строк, в каждой строке должен быть Dropdown с выбором валюты и числовой Input. В каждом Dropdown должна быть выбрана 1 из валют по умолчанию. При изменении значения в любом из двух Input автоматом конвертировать и изменять в другом Input значение.
+- Все значения округлять до 2 знаков
+- Использовать фреймворк Vue3
+- На сайт добавить поддержку 3 валют USD, EUR, RUB
+- Ошибкой считается отрицательное значение в инпуте
