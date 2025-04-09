@@ -28,13 +28,11 @@ const list = computed(() => {
   if (!exchangeRates.value) return [];
 
   for (const key in exchangeRates.value) {
-    const value = exchangeRates.value[key];
-
     if (key.endsWith(`-${currency.value}`)) {
       const curr = currencyList.find((x) => key.startsWith(`${x.id}-`));
 
       if (curr) {
-        res.push({ title: curr.title, value });
+        res.push({ title: curr.title, value: exchangeRates.value[key] });
 
         if (res.length === currencyList.length - 1) {
           break;

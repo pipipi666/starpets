@@ -93,6 +93,7 @@ onUnmounted(() => {
     background-color: var(--main-color);
     border-radius: 16px;
     padding: 4px;
+    z-index: 10;
 
     .menuItem {
       display: flex;
