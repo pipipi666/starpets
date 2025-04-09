@@ -1,5 +1,5 @@
 <template>
-  <div class="dropdown">
+  <div :class="{ [`dd_${id}`]: true }" class="dropdown">
     <div class="currValue" @click="toggleMenu">{{ title }}</div>
     <ul v-if="show" class="menu">
       <li
@@ -29,6 +29,8 @@ const props = defineProps<{
 
 const emit = defineEmits(["update:modelValue"]);
 
+const id = self.crypto.randomUUID();
+
 const show = ref(false);
 
 const title = computed(
@@ -50,7 +52,7 @@ const closeMenu = (e: Event) => {
   if (
     !e.target ||
     !(target instanceof HTMLElement) ||
-    !target.closest(".dropdown")
+    !(target.closest(".dropdown") && target.closest(`.dd_${id}`))
   ) {
     show.value = false;
   }
