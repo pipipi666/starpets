@@ -1,5 +1,5 @@
 export const currencyList = [
-  { id: "RUB", title: "RUB" },
-  { id: "EUR", title: "EUR" },
-  { id: "USD", title: "USD" },
+  { id: "rub", title: "RUB" },
+  { id: "eur", title: "EUR" },
+  { id: "usd", title: "USD" },
 ];

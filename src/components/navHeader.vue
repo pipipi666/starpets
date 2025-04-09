@@ -4,10 +4,14 @@
       <nav class="nav">
         <ul class="list">
           <li>
-            <nav-link :to="{ name: 'main' }">Главная</nav-link>
+            <nav-link :to="{ name: 'main' }" :active="isActive('main')"
+              >Главная</nav-link
+            >
           </li>
           <li>
-            <nav-link :to="{ name: 'convert' }">Конвертация</nav-link>
+            <nav-link :to="{ name: 'convert' }" :active="isActive('convert')"
+              >Конвертация</nav-link
+            >
           </li>
         </ul>
       </nav>
@@ -18,13 +22,23 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, ref } from "vue";
+import { defineAsyncComponent } from "vue";
 import { currencyList } from "../consts/consts";
+import { useSystemStore } from "../store/system";
+import { storeToRefs } from "pinia";
+import { useRoute } from "vue-router";
 
 const navLink = defineAsyncComponent(() => import("./navLink.vue"));
 const dropDown = defineAsyncComponent(() => import("./dropDown.vue"));
 
-const currency = ref("RUB");
+const route = useRoute();
+
+const store = useSystemStore();
+const { currency } = storeToRefs(store);
+
+const isActive = (name: string) => {
+  return !!route.matched.find((x) => x.name === name);
+};
 </script>
 
 <style scoped lang="scss">

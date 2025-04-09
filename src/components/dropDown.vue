@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <div class="currValue" @click="toggleMenu">{{ modelValue }}</div>
+    <div class="currValue" @click="toggleMenu">{{ title }}</div>
     <ul v-if="show" class="menu">
       <li
         v-for="item in options"
@@ -15,14 +15,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from "vue";
+import { computed, onMounted, onUnmounted, ref } from "vue";
 
 interface IOption {
   id: string;
   title: string;
 }
 
-defineProps<{
+const props = defineProps<{
   modelValue: string;
   options: IOption[];
 }>();
@@ -30,6 +30,10 @@ defineProps<{
 const emit = defineEmits(["update:modelValue"]);
 
 const show = ref(false);
+
+const title = computed(
+  () => props.options.find((opt) => opt.id === props.modelValue)?.title
+);
 
 const toggleMenu = () => {
   show.value = !show.value;
